@@ -5,7 +5,7 @@ COUNT(b.Savings_id) total_transactions,
 (b.confirmed_amount/Datediff(month, b.maturity_start_date , b.maturity_end_date)) * 12 * AVG(10/100 * b.confirmed_amount) estimated_clv
 FROM
 [adashi_staging].[dbo].[users_customuser] a
-LEFT JOIN
+JOIN
 [adashi_staging].[dbo].[savings_savingsaccount] b
 ON a.id = b.owner_id
 GROUP BY a.id , a.first_name, a.last_name, Datediff( month, b.maturity_start_date , b.maturity_end_date), b.confirmed_amount
